@@ -42,7 +42,7 @@ double generateDouble(){
     
 }
 
-double* newTabl(double* tableau){
+/*double* newTabl(double* tableau){
 
     int isIn = 0;
     int iter = 0;
@@ -73,7 +73,47 @@ double* newTabl(double* tableau){
     printf("lecture : %i, ecriture : %i", lecture, ecriture);
     return tableau;
     
+}*/
+
+double* newTabl(double* tableau){
+
+    int isIn = 0;
+    int iter = 0;
+
+    int lecture = 0;
+    int ecriture = 0;
+
+    srand(time(NULL));
+
+    for (int i = 0; i < NUMS_TO_GENERATE; i++){
+
+        double monEntier = (rand() * rand())%MAX;
+
+        isIn = 0;
+        iter =0;
+
+        while (iter < i){
+            lecture+=1;
+            if(monEntier == tableau[iter]){
+                isIn =1;
+                i-=1;
+            }
+                iter +=1;
+        }
+
+        if(isIn == 0){
+        tableau[i] = monEntier;
+        ecriture+=1;
+        }
+    }
+
+    printf("\nremplire tableau : lecture : %i, ecriture : %i\n", lecture, ecriture);
+    return tableau;
+
 }
+
+
+
 
 
 int estDans(double monNombre, double* tableau, int* lecture){
@@ -89,24 +129,36 @@ int estDans(double monNombre, double* tableau, int* lecture){
 }
 
 double* triSelection(double* tableau){
-    
+    int lecture = 0;
+    int ecriture = 0;
     int min = 0;
     double temp = 0;
-     for(int i = 0 ; i < NUMS_TO_GENERATE-1 ; i++)
-     {
-         min = i;                 
-         for(int j = i+1 ; j < NUMS_TO_GENERATE ; j++)
-             if(tableau[j] < tableau[min])
-                min = j;
-         if(min!=i)
-         {
-            //échanger t[i] et t[min]
-            temp = tableau[i];
-            tableau[i]=tableau[min];
-            tableau[min]=temp;          
+     for(int i = 0 ; i < NUMS_TO_GENERATE-1 ; i++){
+            min = i;                 
+            for(int j = i+1 ; j < NUMS_TO_GENERATE ; j++){
+                lecture +=1;
+                if(tableau[j] < tableau[min]){
+                    min = j;
+                
+            if(min!=i){
+                ecriture +=1;
+                temp = tableau[i];
+                tableau[i]=tableau[min];
+                tableau[min]=temp;          
+            }
+                }
          }
      }
+     printf("\ntrier tableau : lecture : %i, ecriture : %i\n",lecture, ecriture);
      return tableau;
 }
-     
+
+double* dupliquertableau(double* tableau1, double* tableau2){
+    for(int i = 0 ; i < NUMS_TO_GENERATE ; i++){
+        tableau1[i] = tableau2[i];
+    }
+    return tableau1;
+}
+
+
 

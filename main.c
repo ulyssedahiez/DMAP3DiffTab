@@ -8,25 +8,26 @@
 #define NUMS_TO_GENERATE 100000
 
 int main(){
-
     double* tableau = malloc(sizeof(double)*NUMS_TO_GENERATE);
-    //double* tableauTrie = malloc(sizeof(double)*NUMS_TO_GENERATE);
-    printf("\n oui zin \n");
-    tableau = newTabl(tableau);
-    printf("\n oui zo \n");
-    //tableauTrie = triSelection(tableau);
+    double* tableauTrie = malloc(sizeof(double)*NUMS_TO_GENERATE);
     
-    printf("\n oui 1 \n");
-    int i=NUMS_TO_GENERATE-200;
-    while(i<100000){
-        printf("%f, ", tableau[i]);
-        i+=1;
-    }
-    printf("\n oui 2 \n");
+    newTabl(tableau);
+
+    dupliquertableau(tableauTrie, tableau);
+
+    triSelection(tableauTrie);
+
+    /*for(int i = 99950; i<100000; i++){
+        printf("%f ,",tableauTrie[i]);
+    }*/
 
     
     return 0;
+
 }
+
+    
+
 
 // exo 1
 
