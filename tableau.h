@@ -7,4 +7,4 @@ double* triSelection(double* tableau);
 
 int estDans(double monNombre, double* tableau, int* lecture);
 
-double* dupliquertableau(double* tableau1, double* tableau2)
+double* dupliquertableau(double* tableau1, double* tableau2);

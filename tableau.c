@@ -35,11 +35,9 @@
     return 0;
 }*/
 double generateDouble(){
-    
 
     return (rand() * rand())%MAX;
 
-    
 }
 
 /*double* newTabl(double* tableau){
