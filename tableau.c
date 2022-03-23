@@ -2,13 +2,45 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
+#include <math.h>
 #include "tableau.h"
 
 #define MAX 1000000
-#define NUMS_TO_GENERATE 10000
+#define NUMS_TO_GENERATE 100000
 
 
+
+/*double* newTabl(double* tableau, int iter){
+
+    int lecture = 0;
+    int ecriture = 0;
+    
+    srand(time(NULL));
+        
+    double monEntier = rand() % MAX;
+
+    if(iter == NUMS_TO_GENERATE){
+        printf("lecture : %i, ecriture : %i", lecture, ecriture);
+        return tableau;
+    }
+
+    if(estDans(monEntier, tableau, &lecture) == 0){
+        tableau[iter] = monEntier;
+        iter +=1;
+        ecriture+=1;
+        newTabl(tableau, iter);
+    }else{
+        newTabl(tableau, iter);
+    }  
+    return 0;
+}*/
+double generateDouble(){
+    
+
+    return (rand() * rand())%MAX;
+
+    
+}
 
 double* newTabl(double* tableau){
 
@@ -18,27 +50,23 @@ double* newTabl(double* tableau){
     int lecture = 0;
     int ecriture = 0;
 
-    srand(time(NULL));
 
     for (int i = 0; i < NUMS_TO_GENERATE; i++){
         
-        double monEntier = rand() % MAX;
+        double monEntier = generateDouble();
 
         isIn = 0;
-        iter =0;
+        
 
-        while (iter < i){
-            lecture+=1;
-            if(monEntier == tableau[iter]){
-                isIn =1;
-                i-=1;
-            }
-                iter +=1;
-        }
+        
 
-        if(isIn == 0){
+        if(estDans(monEntier, tableau, &lecture) == 0){
         tableau[i] = monEntier;
         ecriture+=1;
+
+        printf("%i\n ", ecriture);
+        }else{
+            i--;
         }
     }
 
@@ -47,7 +75,21 @@ double* newTabl(double* tableau){
     
 }
 
+
+int estDans(double monNombre, double* tableau, int* lecture){
+    int isIn = 0;
+    for (int i = 0; i < NUMS_TO_GENERATE; i++){
+        if(tableau[i]== monNombre){
+            *lecture +=1;
+            isIn = 1;
+            break;
+        }
+    }
+    return isIn;
+}
+
 double* triSelection(double* tableau){
+    
     int min = 0;
     double temp = 0;
      for(int i = 0 ; i < NUMS_TO_GENERATE-1 ; i++)
