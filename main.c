@@ -15,11 +15,13 @@ int main(){
 
     dupliquertableau(tableauTrie, tableau);
 
-    triSelection(tableauTrie);
+    triSelection(tableauTrie, tableauTrie);
+    double tyo = 200;
+    plusProche(tableau, tyo);
 
-    /*for(int i = 99950; i<100000; i++){
-        printf("%f ,",tableauTrie[i]);
-    }*/
+    for(int i = 0; i<50; i++){
+        printf("%f, ",tableauTrie[i]);
+    }
 
     
     return 0;

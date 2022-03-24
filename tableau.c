@@ -6,7 +6,7 @@
 #include "tableau.h"
 
 #define MAX 1000000
-#define NUMS_TO_GENERATE 100000
+#define NUMS_TO_GENERATE 1000
 
 
 
@@ -126,30 +126,77 @@ int estDans(double monNombre, double* tableau, int* lecture){
     return isIn;
 }
 
-double* triSelection(double* tableau){
+ 
+
+double* triSelection(double* tableau, double* tableauTrie){
     int lecture = 0;
     int ecriture = 0;
-    int min = 0;
-    double temp = 0;
-     for(int i = 0 ; i < NUMS_TO_GENERATE-1 ; i++){
-            min = i;                 
-            for(int j = i+1 ; j < NUMS_TO_GENERATE ; j++){
-                lecture +=1;
-                if(tableau[j] < tableau[min]){
-                    min = j;
-                
-            if(min!=i){
-                ecriture +=1;
-                temp = tableau[i];
-                tableau[i]=tableau[min];
-                tableau[min]=temp;          
-            }
-                }
-         }
-     }
-     printf("\ntrier tableau : lecture : %i, ecriture : %i\n",lecture, ecriture);
-     return tableau;
+    int tempi = 0;
+    double prec = 0;
+    double pluspetite = 0;
+        for(int j=0; j<NUMS_TO_GENERATE;j++){
+            for(int i=0; i < NUMS_TO_GENERATE ; i++){
+                double pluspetite2 = MAX;
+                int tempi=0;
+                for(int i=0; i < NUMS_TO_GENERATE ; i++){
+                    if(tableau[i]>prec){
+                        if(tableau[i]<pluspetite2){
+
+                                pluspetite2 = tableau[i];
+                                tempi = i;        
+                            }
+                    }
+            } 
+                prec = tableau[tempi];
+                tableauTrie[i] = prec;
+            }  
+            prec = pluspetite;  
+        }
+        
+        
+        
+                    
+                    
+    
+    return tableau;
 }
+
+int plusProche(double* tableau, double valeur){
+    
+    double prec2 = 0;
+    double pluspetite2 = MAX;
+    int tempi=0;
+    int tempo = 0;
+    for(int i=0; i < NUMS_TO_GENERATE ; i++){
+                
+                if(tableau[i]>valeur){
+                if(tableau[i]<pluspetite2){
+
+                        pluspetite2 = tableau[i];
+                        tempi = i;
+                        tempo = 1;
+                        
+                    }
+                }
+                
+            } 
+            return tempi;
+            
+            
+}
+
+int chercherNombre(double* tableau, double nombre){
+    int tempi = 0;
+    for(int i=0; i < NUMS_TO_GENERATE ; i++){
+
+    }
+
+    return tempi;
+
+}
+
+
+
 
 double* dupliquertableau(double* tableau1, double* tableau2){
     for(int i = 0 ; i < NUMS_TO_GENERATE ; i++){
