@@ -4,7 +4,9 @@
 #include <time.h>
 
 #include "tableau.h"
+#include "ListeChaine.h"
 
+#define MAX 1000000
 #define NUMS_TO_GENERATE 100000
 
 int main(){
@@ -16,8 +18,11 @@ int main(){
     dupliquertableau(tableauTrie, tableau);
 
     triSelection(tableauTrie, tableauTrie);
-    double tyo = 200;
-    plusProche(tableau, tyo);
+    double monEntier = (rand() * rand())%MAX;
+    printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableau, monEntier), monEntier);
+    printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableauTrie, monEntier), monEntier);
+    
+    
 
     
 
