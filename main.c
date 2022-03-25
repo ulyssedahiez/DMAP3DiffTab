@@ -10,7 +10,7 @@
 #define NUMS_TO_GENERATE 100000
 
 int main(){
-    double* tableau = malloc(sizeof(double)*NUMS_TO_GENERATE);
+    /*double* tableau = malloc(sizeof(double)*NUMS_TO_GENERATE);
     double* tableauTrie = malloc(sizeof(double)*NUMS_TO_GENERATE);
     
     newTabl(tableau);
@@ -20,10 +20,15 @@ int main(){
     triSelection(tableauTrie, tableauTrie);
     double monEntier = (rand() * rand())%MAX;
     printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableau, monEntier), monEntier);
-    printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableauTrie, monEntier), monEntier);
-    
-    
+    printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableauTrie, monEntier), monEntier);*/
+    double ci = 500000;
+    liste l = newElemList(ci);
 
+    MakeRandList(l);
+    //afficherListe(l);
+
+    printf("l : %f", l->val);
+    
     
 
     
