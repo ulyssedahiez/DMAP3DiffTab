@@ -6,7 +6,7 @@
 #include "tableau.h"
 
 #define MAX 1000000
-#define NUMS_TO_GENERATE 1000
+#define NUMS_TO_GENERATE 100000
 
 
 
@@ -78,8 +78,8 @@ double* newTabl(double* tableau){
     int isIn = 0;
     int iter = 0;
 
-    int lecture = 0;
-    int ecriture = 0;
+    long long int lecture = 0;
+    long long int ecriture = 0;
 
     srand(time(NULL));
 
@@ -105,7 +105,7 @@ double* newTabl(double* tableau){
         }
     }
 
-    printf("\nremplire tableau : lecture : %i, ecriture : %i\n", lecture, ecriture);
+    printf("\nremplire tableau : lecture : %lli, ecriture : %lli\n", lecture, ecriture);
     return tableau;
 
 }
@@ -129,35 +129,43 @@ int estDans(double monNombre, double* tableau, int* lecture){
  
 
 double* triSelection(double* tableau, double* tableauTrie){
-    int lecture = 0;
-    int ecriture = 0;
+    long long int lecture = 0;
+    long long int ecriture = 0;
     int tempi = 0;
     double prec = 0;
     double pluspetite = 0;
         for(int j=0; j<NUMS_TO_GENERATE;j++){
-            for(int i=0; i < NUMS_TO_GENERATE ; i++){
-                double pluspetite2 = MAX;
-                int tempi=0;
-                for(int i=0; i < NUMS_TO_GENERATE ; i++){
-                    if(tableau[i]>prec){
-                        if(tableau[i]<pluspetite2){
+            
 
-                                pluspetite2 = tableau[i];
-                                tempi = i;        
-                            }
-                    }
-            } 
-                prec = tableau[tempi];
-                tableauTrie[i] = prec;
-            }  
-            prec = pluspetite;  
-        }
-        
-        
-        
-                    
-                    
+            //------------------------------------------
+
+                
+            double pluspetite2 = MAX;
     
+            int tempo = 0;
+            for(int i=0; i < NUMS_TO_GENERATE ; i++){
+                lecture+=1;
+                if(tableau[i]>pluspetite){
+                    if(tableau[i]<pluspetite2){
+                            
+                            pluspetite2 = tableau[i];
+                            tempi = i;
+                            
+                            
+                    }
+                }
+                
+            } 
+
+            //-------------------------------------------
+                prec = tableau[tempi];
+                tableauTrie[j] = prec;
+                ecriture+=1;
+            
+            pluspetite = prec;  
+        } 
+    
+    printf("\nremplire trier : lecture : %lli, ecriture : %lli\n", lecture, ecriture);
     return tableau;
 }
 

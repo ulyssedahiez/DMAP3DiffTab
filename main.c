@@ -19,9 +19,7 @@ int main(){
     double tyo = 200;
     plusProche(tableau, tyo);
 
-    for(int i = 0; i<50; i++){
-        printf("%f, ",tableauTrie[i]);
-    }
+    
 
     
     return 0;
