@@ -23,9 +23,14 @@ int main(){
     printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableauTrie, monEntier), monEntier);*/
     double ci = 500000;
     liste l = newElemList(ci);
+    liste lt = newElemList(ci);
 
     MakeRandList(l);
-    //afficherListe(l);
+
+    //dupListe(l, lt);
+
+    //afficherListe(lt);
+    
 
     printf("l : %f", l->val);
     

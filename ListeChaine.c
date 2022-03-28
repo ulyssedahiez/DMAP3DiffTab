@@ -37,7 +37,7 @@ void MakeRandList(liste l){
 
     long long int lecture = 0;
     long long int ecriture = 0;
-    liste first = l;
+    long long int tailleM = 0;
     for (int i = 0; i < NUMS_TO_GENERATE; i++){
         double monEntier = (rand() * rand())%MAX;
         
@@ -50,15 +50,16 @@ void MakeRandList(liste l){
                 isIn =1;
                 i-=1;
             }
-            lecture+=1;
+            //printf("%i, ",lecture);
         }
         if(isIn == 0){
             
             addIL(l, monEntier);
             ecriture+=1;
+            tailleM+= (long long int) sizeof(l);
             }
     }
-    printf("\nremplir liste : lecture : %lli, ecriture : %lli\n", lecture, ecriture);
+    printf("\nremplir liste : lecture : %lli, ecriture : %lli, taille memoire : %lli bytes \n", lecture, ecriture);
     
 }
 
@@ -70,10 +71,33 @@ void afficherListe(liste l){
         printf("%f, ",l->val);
         l=l->next;
     }
-    printf("\n\nil y a %i elements.\n", count);
-    
+    printf("\n\nil y a %i elements.\n", count); 
 
 }
+
+void dupListe(liste l1, liste l2){
+    while(l1->next!=NULL){
+        addIL(l2, l1->val);
+        l1=l1->next;
+    }
+}
+
+void triList(liste l, liste lt){
+    lt->val = l->val;
+    while(l->next!=NULL){
+        while(lt->next!=NULL){
+            if(lt->val = l->val){
+                
+            }
+            lt=lt->next;
+
+        }
+        l=l->next;
+
+    }
+
+}
+
 
 
 
