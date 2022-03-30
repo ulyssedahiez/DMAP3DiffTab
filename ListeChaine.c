@@ -3,8 +3,8 @@
 #include <string.h>
 #include "ListeChaine.h"
 
-#define MAX 100000
-#define NUMS_TO_GENERATE 10000
+#define MAX 1000000
+#define NUMS_TO_GENERATE 10
 
 
 
@@ -26,6 +26,25 @@ void  addIL(liste l, double  new) {
     l->next = newElemList(new);
 
 }
+void  addInt(liste l, double  new, int iter) {
+    
+    liste temp = l;
+    liste temp2 = l->next;
+    for( int i = 0; i<iter; i++){
+        printf(" iter : %i \n", i);
+        if(temp2->next != NULL){
+            temp = temp->next;
+            temp2 = temp2->next;
+        }
+    }
+
+    liste obj = newElemList(new);
+    temp->next = obj;
+    obj->next = temp2;
+    
+
+}
+
 
 double addRandList(liste l){
     double monEntier = (rand() * rand())%MAX;
@@ -34,26 +53,26 @@ double addRandList(liste l){
 }
 
 void MakeRandList(liste l){
-
+    srand(time(NULL));
     long long int lecture = 0;
     long long int ecriture = 0;
     long long int tailleM = 0;
     for (int i = 0; i < NUMS_TO_GENERATE; i++){
         double monEntier = (rand() * rand())%MAX;
-        
+        //printf("%f , ", monEntier);
         int isIn = 0;
         while(l->next !=NULL){
-            
+            lecture+=1;
             l=l->next;
 
             if(l->val == monEntier){
                 isIn =1;
                 i-=1;
             }
-            //printf("%i, ",lecture);
+            
         }
         if(isIn == 0){
-            
+            //printf("oui : %f", monEntier);
             addIL(l, monEntier);
             ecriture+=1;
             tailleM+= (long long int) sizeof(l);
@@ -64,14 +83,14 @@ void MakeRandList(liste l){
 }
 
 void afficherListe(liste l){
-    printf("\n\n");
+    printf("\n\n afficherListe : \n\n");
     int count = 0;
     while(l->next!=NULL){
         count++;
         printf("%f, ",l->val);
         l=l->next;
     }
-    printf("\n\nil y a %i elements.\n", count); 
+    printf("\n\n\nil y a %i elements.\n\n\n", count); 
 
 }
 
@@ -84,15 +103,41 @@ void dupListe(liste l1, liste l2){
 
 void triList(liste l, liste lt){
     lt->val = l->val;
+    l = l->next;
+    liste ltb=lt;
+    int iter = 0;
+    int first = 0;
     while(l->next!=NULL){
-        while(lt->next!=NULL){
-            if(lt->val = l->val){
-                
+        printf("iter : %i \n", iter);
+        // pour le premier ellement
+        if(lt->next == NULL && first ==0){
+            double firstc = 500000;
+            if(l->val >= firstc ){
+                addIL(lt, l->val);
+            }else{
+                liste bFirst = newElemList(l->val);
+                bFirst->next = lt;
             }
-            lt=lt->next;
+        first = 1;
+        //pour tout les autres
+        }else{
+            
+            while(lt->next!=NULL){
+                if(lt->next != NULL && lt->next->val < l->val ){
+                    lt=lt->next;  
+                    iter ++;
+                }
+            }
+
+            printf("%i, ",iter);
+        
+            addInt(lt, l->val, iter-1);
+            l=l->next;
+            lt=ltb;
+            iter = 0;
 
         }
-        l=l->next;
+        
 
     }
 

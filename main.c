@@ -7,7 +7,7 @@
 #include "ListeChaine.h"
 
 #define MAX 1000000
-#define NUMS_TO_GENERATE 100000
+#define NUMS_TO_GENERATE 1000
 
 int main(){
     /*double* tableau = malloc(sizeof(double)*NUMS_TO_GENERATE);
@@ -22,15 +22,28 @@ int main(){
     printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableau, monEntier), monEntier);
     printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableauTrie, monEntier), monEntier);*/
     double ci = 500000;
+    double test = 290322;
     liste l = newElemList(ci);
     liste lt = newElemList(ci);
+
+    //addIL(lr, ci);
+    //addIL(lr, test);
+    //addIL(lr, co);
 
     MakeRandList(l);
 
     //dupListe(l, lt);
+    printf("\nbug 1\n");
 
-    //afficherListe(lt);
+    // c'est ici que ça beug pelo
+    triList(l, lt);
+    printf("\nbug 2\n");
+    //addInt(lr, test, 3);
     
+    printf("\n\nliste non trié : \n\n");
+    afficherListe(l);
+    printf("\n\nliste trié : \n\n");
+    afficherListe(lt);
 
     printf("l : %f", l->val);
     
