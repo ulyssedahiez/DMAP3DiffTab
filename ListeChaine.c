@@ -5,7 +5,7 @@
 #include "ListeChaine.h"
 
 #define MAX 1000000
-#define NUMS_TO_GENERATE 10
+#define NUMS_TO_GENERATE 10000
 
 
 
@@ -38,21 +38,18 @@ liste  addInt(liste l, double  new, int iter) {
     }else {
         int estder = 0;
         if(iter!=1){
-        
+    
     for( int i = 1; i<iter; i++){
-        printf(" iter : %i \n", i);
         if(temp2->next != NULL){
             temp = temp->next;
             temp2 = temp2->next;
         }else{
             estder=1;
             temp = temp->next;
-            
         }
     }
         }
     if(estder==0){
-        printf("%f , %f", temp->val, temp2->val);
         liste obj = newElemList(new);
         temp->next = obj;
         obj->next = temp2;
@@ -60,11 +57,8 @@ liste  addInt(liste l, double  new, int iter) {
         liste obj = newElemList(new);
         temp->next = obj;
     }
-    
     }
-
     return first;
-
 }
 
 
@@ -114,7 +108,7 @@ void afficherListe(liste l){
     }
     
     printf("%f, ",l->val);
-    printf("\n\n\nil y a %i elements.\n\n\n", count); 
+    printf("\n\nil y a %i elements.\n\n", count); 
 
 }
 
@@ -125,62 +119,48 @@ void dupListe(liste l1, liste l2){
     }
 }
 
+
 liste triList(liste l, liste lt){
     lt->val = l->val;
     l = l->next;
-    liste ltb=lt;
     int iter = 0;
     int first = 0;
-
-    printf("\n%f : %f \n" , lt->val, l->val);
-                
-
-    while(l->next!=NULL){
-        
-        // pour le premier ellement
+    liste firstLt = lt;
         if(lt->next == NULL && first ==0){
-            
-            double firstc = 500000;
-            if(l->val >= firstc ){
-                printf("%f ,1",l->val);
-                printf("iter : %i \n", iter);
-                addIL(lt, l->val);
-                lt=ltb;
-            }else{
-                liste bFirst = newElemList(l->val);
-                bFirst->next = lt;
-                lt=bFirst;
-                
-                
-            }
-        first = 1;
-        //pour tout les autres
-        }else{
-            
-            while(lt->next!=NULL){
-                //printf("iter : %i \n", iter);
-                    
-                if(lt->next != NULL && lt->next->val < l->val ){
-                    lt=lt->next;  
-                    iter ++;
-                }else{
-                    lt=lt->next;
+                    double firstc = 500000.000;
+                    if(l->val >= firstc ){
+                        addIL(lt, l->val);
+                    }else{
+                        liste bFirst = newElemList(l->val);
+                        bFirst->next = lt;
+                        lt=bFirst;
+                    }
+                first = 1;
+                l=l->next;
                 }
-                
-            }
-
-            printf("%i, ",iter);
-        
-            lt = addInt(lt, l->val, iter);
+    while(l->next!=NULL){
+            lt = placer( lt, l->val);
             l=l->next;
-            iter = 0;
-
-        }
-        
-
     }
     return lt;
 
+}
+
+liste placer(liste lt, double val){
+    liste firstLt = lt;
+    int  iter = 0;
+    while(lt->next!=NULL){
+                if(val > lt->val){
+                        iter++;
+                }
+                lt=lt->next;
+            }
+            if(lt->next == NULL && val > lt->val ){
+                    iter++;
+                }
+            lt = addInt(firstLt, val,iter);
+    return lt;
+        
 }
 
 

@@ -21,15 +21,17 @@ int main(){
     double monEntier = (rand() * rand())%MAX;
     printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableau, monEntier), monEntier);
     printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableauTrie, monEntier), monEntier);*/
-    double ci = 501000;
-    double test = 290322;
-    double co = 20000;
-    double inter =240598;
+    double ci = 500000;
+    /*double ctu = 30;
+    double test = 20;
+    double co = 40;
+    
+    double inter =240598;*/
     liste l = newElemList(ci);
     liste lt = newElemList(ci);
 
-    /*addIL(l, ci);
-    addIL(l, test);
+   /* addIL(l, test);
+    addIL(l, ctu);
     addIL(l, co);*/
 
     MakeRandList(l);
@@ -48,6 +50,12 @@ int main(){
     afficherListe(lt);
 
     printf("l : %f", l->val);
+
+    /*double itto = 45;
+
+    l=placer(l, itto);
+    printf("\n\nliste non trie : \n\n");
+    afficherListe(l);*/
     
     
 

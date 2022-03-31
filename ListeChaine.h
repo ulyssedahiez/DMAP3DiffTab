@@ -19,3 +19,5 @@ void afficherListe(liste l);
 void dupListe(liste l1, liste l2);
 
 liste triList(liste l, liste lt);
+
+liste placer(liste lt, double val);
