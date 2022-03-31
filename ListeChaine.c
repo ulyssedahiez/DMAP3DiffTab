@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "ListeChaine.h"
 
 #define MAX 1000000
@@ -26,22 +27,43 @@ void  addIL(liste l, double  new) {
     l->next = newElemList(new);
 
 }
-void  addInt(liste l, double  new, int iter) {
-    
+liste  addInt(liste l, double  new, int iter) {
+    liste first=l;
     liste temp = l;
     liste temp2 = l->next;
-    for( int i = 0; i<iter; i++){
+    if(iter == 0){
+        liste obj = newElemList(new);
+        obj->next=l;
+        first=obj;
+    }else {
+        int estder = 0;
+        if(iter!=1){
+        
+    for( int i = 1; i<iter; i++){
         printf(" iter : %i \n", i);
         if(temp2->next != NULL){
             temp = temp->next;
             temp2 = temp2->next;
+        }else{
+            estder=1;
+            temp = temp->next;
+            
         }
     }
-
-    liste obj = newElemList(new);
-    temp->next = obj;
-    obj->next = temp2;
+        }
+    if(estder==0){
+        printf("%f , %f", temp->val, temp2->val);
+        liste obj = newElemList(new);
+        temp->next = obj;
+        obj->next = temp2;
+    }else{
+        liste obj = newElemList(new);
+        temp->next = obj;
+    }
     
+    }
+
+    return first;
 
 }
 
@@ -90,6 +112,8 @@ void afficherListe(liste l){
         printf("%f, ",l->val);
         l=l->next;
     }
+    
+    printf("%f, ",l->val);
     printf("\n\n\nil y a %i elements.\n\n\n", count); 
 
 }
@@ -101,45 +125,61 @@ void dupListe(liste l1, liste l2){
     }
 }
 
-void triList(liste l, liste lt){
+liste triList(liste l, liste lt){
     lt->val = l->val;
     l = l->next;
     liste ltb=lt;
     int iter = 0;
     int first = 0;
+
+    printf("\n%f : %f \n" , lt->val, l->val);
+                
+
     while(l->next!=NULL){
-        printf("iter : %i \n", iter);
+        
         // pour le premier ellement
         if(lt->next == NULL && first ==0){
+            
             double firstc = 500000;
             if(l->val >= firstc ){
+                printf("%f ,1",l->val);
+                printf("iter : %i \n", iter);
                 addIL(lt, l->val);
+                lt=ltb;
             }else{
                 liste bFirst = newElemList(l->val);
                 bFirst->next = lt;
+                lt=bFirst;
+                
+                
             }
         first = 1;
         //pour tout les autres
         }else{
             
             while(lt->next!=NULL){
+                //printf("iter : %i \n", iter);
+                    
                 if(lt->next != NULL && lt->next->val < l->val ){
                     lt=lt->next;  
                     iter ++;
+                }else{
+                    lt=lt->next;
                 }
+                
             }
 
             printf("%i, ",iter);
         
-            addInt(lt, l->val, iter-1);
+            lt = addInt(lt, l->val, iter);
             l=l->next;
-            lt=ltb;
             iter = 0;
 
         }
         
 
     }
+    return lt;
 
 }
 

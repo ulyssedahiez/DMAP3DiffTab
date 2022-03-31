@@ -21,14 +21,16 @@ int main(){
     double monEntier = (rand() * rand())%MAX;
     printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableau, monEntier), monEntier);
     printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableauTrie, monEntier), monEntier);*/
-    double ci = 500000;
+    double ci = 501000;
     double test = 290322;
+    double co = 20000;
+    double inter =240598;
     liste l = newElemList(ci);
     liste lt = newElemList(ci);
 
-    //addIL(lr, ci);
-    //addIL(lr, test);
-    //addIL(lr, co);
+    /*addIL(l, ci);
+    addIL(l, test);
+    addIL(l, co);*/
 
     MakeRandList(l);
 
@@ -36,13 +38,13 @@ int main(){
     printf("\nbug 1\n");
 
     // c'est ici que ça beug pelo
-    triList(l, lt);
+    lt = triList(l, lt);
     printf("\nbug 2\n");
-    //addInt(lr, test, 3);
+    //l=addInt(l, inter, 4);
     
-    printf("\n\nliste non trié : \n\n");
+    printf("\n\nliste non trie : \n\n");
     afficherListe(l);
-    printf("\n\nliste trié : \n\n");
+    printf("\n\nliste triee : \n\n");
     afficherListe(lt);
 
     printf("l : %f", l->val);
