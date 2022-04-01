@@ -6,6 +6,8 @@ typedef  struct  Liste_ * liste;
 
 liste newElemList(double v);
 
+int estDansL(liste l, double val);
+
 void  addIL(liste l, double  new);
 
 liste  addInt(liste l, double  new, int iter);
@@ -21,3 +23,5 @@ void dupListe(liste l1, liste l2);
 liste triList(liste l, liste lt);
 
 liste placer(liste lt, double val);
+
+void iterInList(liste l, double var);

@@ -10,6 +10,9 @@
 #define NUMS_TO_GENERATE 1000
 
 int main(){
+
+    // ----------------Tableau--------------------
+
     /*double* tableau = malloc(sizeof(double)*NUMS_TO_GENERATE);
     double* tableauTrie = malloc(sizeof(double)*NUMS_TO_GENERATE);
     
@@ -21,44 +24,35 @@ int main(){
     double monEntier = (rand() * rand())%MAX;
     printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableau, monEntier), monEntier);
     printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableauTrie, monEntier), monEntier);*/
-    double ci = 500000;
-    /*double ctu = 30;
-    double test = 20;
-    double co = 40;
     
-    double inter =240598;*/
+
+    // ----------------Liste Chainée--------------------
+
+    /*double ci = 500000;
+    
     liste l = newElemList(ci);
     liste lt = newElemList(ci);
 
-   /* addIL(l, test);
-    addIL(l, ctu);
-    addIL(l, co);*/
+   
 
     MakeRandList(l);
 
-    //dupListe(l, lt);
-    printf("\nbug 1\n");
 
-    // c'est ici que ça beug pelo
     lt = triList(l, lt);
-    printf("\nbug 2\n");
-    //l=addInt(l, inter, 4);
-    
-    printf("\n\nliste non trie : \n\n");
-    afficherListe(l);
-    printf("\n\nliste triee : \n\n");
-    afficherListe(lt);
-
-    printf("l : %f", l->val);
-
-    /*double itto = 45;
-
-    l=placer(l, itto);
-    printf("\n\nliste non trie : \n\n");
-    afficherListe(l);*/
-    
     
 
+    srand(time(NULL));
+    double monEntier = (rand() * rand())%MAX;
+
+    printf("\n iter dans la liste non trie :\n");
+    iterInList(l, monEntier);
+    printf("\n iter dans la liste trie :\n");
+    iterInList(lt, monEntier);
+*/
+    
+    // ----------------arbre binaire--------------------
+    
+    
     
     return 0;
 

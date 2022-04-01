@@ -6,9 +6,9 @@
 
 #define MAX 1000000
 #define NUMS_TO_GENERATE 10000
-
-
-
+long long int counterLectureTri = 0;
+long long int lecturemakeRandList =0;
+int ecriture2 = 0;
 
 liste newElemList(double v){
     liste  elt = malloc(sizeof(struct Liste_));
@@ -27,48 +27,10 @@ void  addIL(liste l, double  new) {
     l->next = newElemList(new);
 
 }
-liste  addInt(liste l, double  new, int iter) {
-    liste first=l;
-    liste temp = l;
-    liste temp2 = l->next;
-    if(iter == 0){
-        liste obj = newElemList(new);
-        obj->next=l;
-        first=obj;
-    }else {
-        int estder = 0;
-        if(iter!=1){
-    
-    for( int i = 1; i<iter; i++){
-        if(temp2->next != NULL){
-            temp = temp->next;
-            temp2 = temp2->next;
-        }else{
-            estder=1;
-            temp = temp->next;
-        }
-    }
-        }
-    if(estder==0){
-        liste obj = newElemList(new);
-        temp->next = obj;
-        obj->next = temp2;
-    }else{
-        liste obj = newElemList(new);
-        temp->next = obj;
-    }
-    }
-    return first;
-}
 
 
-double addRandList(liste l){
-    double monEntier = (rand() * rand())%MAX;
-    addIL(l, monEntier);
-    return monEntier;
-}
 
-void MakeRandList(liste l){
+void MakeRandList(liste ld){
     srand(time(NULL));
     long long int lecture = 0;
     long long int ecriture = 0;
@@ -77,11 +39,14 @@ void MakeRandList(liste l){
         double monEntier = (rand() * rand())%MAX;
         //printf("%f , ", monEntier);
         int isIn = 0;
+        liste l=ld;
         while(l->next !=NULL){
-            lecture+=1;
+           
+            lecturemakeRandList+=1;
             l=l->next;
 
             if(l->val == monEntier){
+                 
                 isIn =1;
                 i-=1;
             }
@@ -94,7 +59,7 @@ void MakeRandList(liste l){
             tailleM+= (long long int) sizeof(l);
             }
     }
-    printf("\nremplir liste : lecture : %lli, ecriture : %lli, taille memoire : %lli bytes \n", lecture, ecriture);
+    printf("\nremplir liste : lecture : %lli, ecriture : %lli, taille memoire : %lli bytes \n", lecturemakeRandList, ecriture);
     
 }
 
@@ -123,10 +88,10 @@ void dupListe(liste l1, liste l2){
 liste triList(liste l, liste lt){
     lt->val = l->val;
     l = l->next;
-    int iter = 0;
     int first = 0;
-    liste firstLt = lt;
+     
         if(lt->next == NULL && first ==0){
+            ecriture2+=1;
                     double firstc = 500000.000;
                     if(l->val >= firstc ){
                         addIL(lt, l->val);
@@ -139,12 +104,35 @@ liste triList(liste l, liste lt){
                 l=l->next;
                 }
     while(l->next!=NULL){
+            ecriture2+=1;
+            
             lt = placer( lt, l->val);
             l=l->next;
     }
+     printf("\nremplir liste : lecture : %lli, ecriture : %d, \n", counterLectureTri, ecriture2);
+    
     return lt;
 
 }
+int itero = 0;
+void iterInList(liste l, double var){
+    itero = 0;
+    int place = 0;
+     while(l->next!=NULL){
+         itero+=1;
+         //printf("\nitero : %i", itero);
+         if(l->val == var){
+             place = itero;
+         }
+         l=l->next;
+     }
+     if(place == 0){
+         printf("\n%f n'est pas dans le tableau.\n", var);
+     }else{
+         printf("%f est a la place %i.", var, place);
+     }
+}
+
 
 liste placer(liste lt, double val){
     liste firstLt = lt;
@@ -165,7 +153,41 @@ liste placer(liste lt, double val){
 
 
 
-
+liste  addInt(liste l, double  new, int iter) {
+    liste first=l;
+    liste temp = l;
+    liste temp2 = l->next;
+    if(iter == 0){
+        liste obj = newElemList(new);
+        obj->next=l;
+        first=obj;
+        counterLectureTri++;
+    }else {
+        int estder = 0;
+        if(iter!=1){
+    
+    for( int i = 1; i<iter; i++){
+        counterLectureTri++;
+        if(temp2->next != NULL){
+            temp = temp->next;
+            temp2 = temp2->next;
+        }else{
+            estder=1;
+            temp = temp->next;
+        }
+    }
+        }
+    if(estder==0){
+        liste obj = newElemList(new);
+        temp->next = obj;
+        obj->next = temp2;
+    }else{
+        liste obj = newElemList(new);
+        temp->next = obj;
+    }
+    }
+    return first;
+}
 
 
 
