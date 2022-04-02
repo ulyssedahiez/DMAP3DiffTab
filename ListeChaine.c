@@ -59,7 +59,7 @@ void MakeRandList(liste ld){
             tailleM+= (long long int) sizeof(l);
             }
     }
-    printf("\nremplir liste : lecture : %lli, ecriture : %lli, taille memoire : %lli bytes \n", lecturemakeRandList, ecriture);
+    printf("\nremplir liste : lecture : %lli, ecriture : %lli, taille memoire : %lli bytes \n", lecturemakeRandList, ecriture, tailleM);
     
 }
 

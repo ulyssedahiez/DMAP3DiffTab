@@ -6,7 +6,7 @@
 #include "tableau.h"
 
 #define MAX 1000000
-#define NUMS_TO_GENERATE 100000
+#define NUMS_TO_GENERATE 10000
 
 
 

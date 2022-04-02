@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS= -Wall -ansi -W -pedantic -std=c99
 
-program.exe : main.o tableau.o ListeChaine.o abreBinaire.o
+program.exe : main.o tableau.o ListeChaine.o arbreBinaire.o
 	$(CC) -o program.exe main.o tableau.o ListeChaine.o arbreBinaire.o
 
 main.o : main.c

@@ -5,12 +5,14 @@
 
 #include "tableau.h"
 #include "ListeChaine.h"
+#include "arbreBinaire.h"
 
 #define MAX 1000000
 #define NUMS_TO_GENERATE 1000
 
 int main(){
-
+    srand(time(NULL));
+    double monEntier = (rand() * rand())%MAX;
     // ----------------Tableau--------------------
 
     /*double* tableau = malloc(sizeof(double)*NUMS_TO_GENERATE);
@@ -21,7 +23,6 @@ int main(){
     dupliquertableau(tableauTrie, tableau);
 
     triSelection(tableauTrie, tableauTrie);
-    double monEntier = (rand() * rand())%MAX;
     printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableau, monEntier), monEntier);
     printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableauTrie, monEntier), monEntier);*/
     
@@ -41,8 +42,7 @@ int main(){
     lt = triList(l, lt);
     
 
-    srand(time(NULL));
-    double monEntier = (rand() * rand())%MAX;
+    
 
     printf("\n iter dans la liste non trie :\n");
     iterInList(l, monEntier);
@@ -51,18 +51,16 @@ int main(){
 */
     
     // ----------------arbre binaire--------------------
+    double da = 500000;
+    arbreB ar = createNewA(da);
     
-    
-    
+    printf("ar :%f\n", monEntier);
+
+    MakeArbreTrie(ar);
+    estDansArbre(ar, monEntier);
+
     return 0;
 
 }
 
     
-
-
-// exo 1
-
-   //lecture : 705243486, ecriture : 100000
-   //lecture : 705092013, ecriture : 100000
-   //lecture : 705070453, ecriture : 100000
