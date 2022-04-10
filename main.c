@@ -11,11 +11,12 @@
 #define NUMS_TO_GENERATE 1000
 
 int main(){
+
     srand(time(NULL));
     double monEntier = (rand() * rand())%MAX;
     // ----------------Tableau--------------------
 
-    /*double* tableau = malloc(sizeof(double)*NUMS_TO_GENERATE);
+    double* tableau = malloc(sizeof(double)*NUMS_TO_GENERATE);
     double* tableauTrie = malloc(sizeof(double)*NUMS_TO_GENERATE);
     
     newTabl(tableau);
@@ -24,12 +25,12 @@ int main(){
 
     triSelection(tableauTrie, tableauTrie);
     printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableau, monEntier), monEntier);
-    printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableauTrie, monEntier), monEntier);*/
+    printf("\ntableau non trie %i, val : %f\n", chercherNombre(tableauTrie, monEntier), monEntier);
     
 
     // ----------------Liste Chainée--------------------
 
-    /*double ci = 500000;
+    double ci = 500000;
     
     liste l = newElemList(ci);
     liste lt = newElemList(ci);
@@ -48,17 +49,17 @@ int main(){
     iterInList(l, monEntier);
     printf("\n iter dans la liste trie :\n");
     iterInList(lt, monEntier);
-*/
+
     
     // ----------------arbre binaire--------------------
     double da = 500000;
     arbreB ar = createNewA(da);
     
-    printf("ar :%f\n", monEntier);
 
     MakeArbreTrie(ar);
     estDansArbre(ar, monEntier);
 
+   // afficher_arbre_binaire(ar,0);
     return 0;
 
 }

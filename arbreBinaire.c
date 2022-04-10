@@ -5,12 +5,12 @@
 #include "arbreBinaire.h"
 
 #define MAX 1000000
-#define NUMS_TO_GENERATE 10000
+#define NUMS_TO_GENERATE 1000
 #define ARBRE_VIDE NULL
 
-long long int iterEstDans = 0;
+int iterEstDans = 0;
 long long int tailleA = 0;
-
+long long int uno = 1;
 long long int lecturemakeRandArbre = 0;
 long long int ecrituremakeRandArbre = 0;
 int doublons =0;
@@ -38,7 +38,7 @@ arbreB MakeArbreTrie(arbreB a){
         beforeEcriture = ecrituremakeRandArbre;
         doublons =0;
     }
-    printf("\nremplir liste : lecture : %lli, ecriture : %lli, taille memoire : %lli bytes \n", lecturemakeRandArbre, ecrituremakeRandArbre, tailleA);
+    printf("\nremplir arbre trie : lecture : %lli, ecriture : %lli, taille memoire : %lli bytes \n", lecturemakeRandArbre, ecrituremakeRandArbre, tailleA);
    
     return first;
 }
@@ -50,7 +50,8 @@ int inserer_dans_abo(arbreB* ceci, double quoi){
     else if (est_arbre_vide(*ceci)){
         *ceci = createNewA(quoi);
         ecrituremakeRandArbre+=1;
-        tailleA+= (long long int) sizeof(*ceci);
+        tailleA += (long long int) sizeof(struct arbreB_);
+
     }else if (est_inferieur_a((*ceci)->val, quoi)){
         inserer_dans_abo(&((*ceci)->la_droite), quoi);
     }else{
@@ -83,14 +84,18 @@ void afficher_arbre_binaire(arbreB ceci, int decalage){
 }
 
 void estDansArbre(arbreB ceci, double cela){
-
-    if(ceci != ARBRE_VIDE){
-        estDansArbre(ceci->la_gauche, cela);
-        iterEstDans++;
-        if(ceci->val == cela){
-            printf("\n%f est trouve au bout de %lli lectures.\n", cela, iterEstDans);
+    
+    
+    iterEstDans+=1;
+    if(ceci->val == cela){
+            printf("\n%f est trouve au bout de %i lectures.\n", cela, iterEstDans);
+       
         }
+    else if(est_inferieur_a(ceci->val, cela)){
         estDansArbre(ceci->la_droite, cela);
+        
+    }else{
+        estDansArbre(ceci->la_gauche, cela);
     }
 }
 

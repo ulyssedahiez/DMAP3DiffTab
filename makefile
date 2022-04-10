@@ -13,7 +13,7 @@ tableau.o : tableau.c tableau.h
 ListeChaine.o : ListeChaine.c ListeChaine.h
 	$(CC) $(CFLAGS) -c ListeChaine.c
 
-ListeChaine.o : arbreBinaire.c arbreBinaire.h
+arbreBinaire.o : arbreBinaire.c arbreBinaire.h
 	$(CC) $(CFLAGS) -c arbreBinaire.c
 
 clean :

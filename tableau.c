@@ -6,7 +6,7 @@
 #include "tableau.h"
 
 #define MAX 1000000
-#define NUMS_TO_GENERATE 10000
+#define NUMS_TO_GENERATE 1000
 
 
 
@@ -23,7 +23,7 @@ double* newTabl(double* tableau){
 
     int isIn = 0;
     int iter = 0;
-
+    printf("beug1 \n");
     long long int lecture = 0;
     long long int ecriture = 0;
 
@@ -32,13 +32,14 @@ double* newTabl(double* tableau){
     for (int i = 0; i < NUMS_TO_GENERATE; i++){
 
         double monEntier = (rand() * rand())%MAX;
-
+        //printf("monEntier : %f, iter : %f \n", monEntier, iter);
         isIn = 0;
         iter =0;
-
         while (iter < i){
+            
             lecture+=1;
             if(monEntier == tableau[iter]){
+                printf("%f %f \n", monEntier, tableau[iter]);
                 isIn =1;
                 i-=1;
             }
@@ -46,6 +47,7 @@ double* newTabl(double* tableau){
         }
 
         if(isIn == 0){
+            //printf("%f %f \n", monEntier, tableau[iter]);
         tableau[i] = monEntier;
         ecriture+=1;
         }
@@ -134,6 +136,3 @@ double* dupliquertableau(double* tableau1, double* tableau2){
     }
     return tableau1;
 }
-
-
-

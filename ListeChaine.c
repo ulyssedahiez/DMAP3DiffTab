@@ -53,10 +53,10 @@ void MakeRandList(liste ld){
             
         }
         if(isIn == 0){
-            //printf("oui : %f", monEntier);
             addIL(l, monEntier);
             ecriture+=1;
-            tailleM+= (long long int) sizeof(l);
+            tailleM+= (long long int) sizeof(struct Liste_);
+            
             }
     }
     printf("\nremplir liste : lecture : %lli, ecriture : %lli, taille memoire : %lli bytes \n", lecturemakeRandList, ecriture, tailleM);
@@ -109,7 +109,7 @@ liste triList(liste l, liste lt){
             lt = placer( lt, l->val);
             l=l->next;
     }
-     printf("\nremplir liste : lecture : %lli, ecriture : %d, \n", counterLectureTri, ecriture2);
+     printf("\nremplir liste trie : lecture : %lli, ecriture : %d. \n", counterLectureTri, ecriture2);
     
     return lt;
 
